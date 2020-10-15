@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	  window.onload =function(){
+		var menode;
+		menode = document.getElementById("me");
+		
+		menode.style.backgroundColor="yellow";
+		
+		var parentnode = menode.parentNode; //body
+		parentnode.style.backgroundColor = "skyblue";
+		
+		var grandnode;
+		grandnode = parentnode.parentNode; //HTML
+		grandnode.style.backgroundColor="green";
+		
+		var my = document.getElementById("mychild");
+		console.log(my); //ul 전체
+		console.log(my.firstChild.nodeName); //태그이름이 무엇인지 LI
+		console.log(my.firstChild.innerText); //AA
+		//innerHTML, innerText >> value 속성이 없는 태그들에 사용
+		//div, span, li, p
+		//<input type="text" value=""...
+		console.log(my.firstChild.nextSibling.innerText); //BB
+		console.log(my.childNodes); //Array
+		console.log(my.childNodes.length);
+		
+		for(let i=0; i<my.childNodes.length; i++){
+			let text = my.childNodes[i].innerText;
+			console.log(text);
+		}
+		
+	  }	
+	</script>
+</head>
+<body>
+<div>A</div><div>B</div><div id="me">C</div><div>D</div><div>E</div>
+<ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>
+</body>
+</html>

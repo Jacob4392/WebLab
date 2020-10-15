@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	
+		 function eventProductor(frm){
+			 
+			  console.log(frm);
+			  console.log(frm.productor.value); //선택된 option 태그의   value 값
+			  console.log("index : " + frm.productor.selectedIndex); //방번호
+			  //select 태그가 option 구분하기 위해서 자체적으로 배열관리
+			  //selectedIndex [0][1][2][3]
+			  console.log(frm.productor.options[0].value);
+			  console.log(frm.productor.options[0].text); //제조사, 삼성전자
+			  console.log(frm.productor.options[frm.productor.selectedIndex].value);
+			  console.log(frm.productor.options[frm.productor.selectedIndex].text);
+			  
+			  var index = frm.productor.selectedIndex;
+			  var val =  frm.productor.options[index].value;
+			  var text = frm.productor.options[index].text;
+			  
+			  if(index === 0){ //제조사 선택 
+				  frm.valProductor.value = "";
+				  frm.txtProductor.value = "";
+			  }else{ //제조사를 선택하지 않은 나머지 케이스
+				  frm.valProductor.value = val;
+				  frm.txtProductor.value = text;
+			  }
+		 }
+		 
+		 function eventBrand(){
+			 var frm = document.frmdata;
+			 
+			  var index = frm.brand.selectedIndex;
+			  var val =  frm.brand.options[index].value;
+			  var text = frm.brand.options[index].text;
+			  
+			  if(index === 0){ //제조사 선택 
+				  frm.valBrand.value = "";
+				  frm.txtBrand.value = "";
+			  }else{ //제조사를 선택하지 않은 나머지 케이스
+				  frm.valBrand.value = val;
+				  frm.txtBrand.value = text;
+			  }
+		 }
+	</script>
+</head>
+<body>
+	모델별 최저가 검색<br>
+	<form name="frmdata">
+			<select  style="width: 200px" name="productor"  
+			         onchange="eventProductor(this.form)">
+				<option value="A000" selected>제조사</option> <!-- select[0]  -->
+				<option value="A001">삼성전자</option>
+				<option value="A002">LG전자</option>
+				<option value="A003">Apple</option>
+				<option value="A004">Dell</option>
+			</select>
+		    <input type="text" name="valProductor" size="10">
+		    <input type="text" name="txtProductor" size="10">
+		    <br>
+	      
+		    <select style="width: 200px"  name="brand"  onchange="eventBrand()">
+		        <option value="B000" SELECTED>브랜드</option>
+		        <option value="B001">센스</option>
+		        <option value="B002">X-Note</option>
+		        <option value="B003">MAC</option>
+		        <option value="B004">VAIO</option>
+		    </select>
+			    <input type="text" name="valBrand" size="10">
+			    <input type="text" name="txtBrand" size="10">
+	</form>
+</body>
+</html>

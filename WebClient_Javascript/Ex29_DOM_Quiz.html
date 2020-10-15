@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var myphotos = ["Images/1.jpg",
+								 "Images/2.jpg",
+								 "Images/3.jpg",
+								 "Images/4.jpg",
+			                     ]; 
+			
+			var index = 0;
+			
+			document.getElementById("prv").onclick = function(){
+				if(index == 0){
+					index = myphotos.length;
+				}
+				document.getElementById("imgs").src = myphotos[--index];
+				//[0][1][2][3]
+			}
+			
+			document.getElementById("next").onclick = function(){
+				if(++index == myphotos.length){
+					index = 0;
+				}
+				document.getElementById("imgs").src = myphotos[index];
+			}
+			
+			//img.src =
+
+ 			//myphotos[index]
+			
+			/* pre.onclick = function(e){
+				console.log(e.type);
+			};
+			
+			var next = document.getElementById("next");
+			next.onclick = function(e){
+				
+			};
+			
+			document.getElementById(prv).addEventListener("click", function() {
+				for(let i=0; i < myphotos.length; i++){
+					if(i === 0){
+						document.body.img.src = myphotos[myphotos.length];
+					}else{
+						event.target.a.href = myphotos[i];
+					}
+					
+				}
+				
+			}, false);
+			
+			document.getElementById(next).addEventListener("click", function() {
+				
+			}, false); */
+
+			
+			//int[] arr = new int[]{10,20,30}
+			                     
+			//console.log(myphotos[2]);
+			//img  id="imgs" 의 src 속성값을        myphotos의 값으로                
+			//var img =.....
+			//img.src = ...
+			//img.setAttr ....(name,value)
+			//myphotos[index]
+			
+			//이전 구현
+			//이전 onclick 이벤트 (익명함수 )사용해서 ......
+			
+			
+			//다음 구현
+			//다음 onclick 이벤트(익명함수)사용해서 ......
+			//id prv onclick 이벤트 ..... 
+
+			
+		}
+	</script>
+</head>
+<body>
+	<h3>DOM 슬라이드</h3>
+	<img src="Images/1.jpg" id="imgs" width="200" height="200" alt="이미지">
+	<hr>
+	<a href="#" id="prv">이전</a>||<a href="#" id="next">다음</a>
+</body>
+</html>

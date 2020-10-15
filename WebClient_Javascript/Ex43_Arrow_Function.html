@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<p id="demo"></p>
+	
+</body>
+<script type="text/javascript">
+	
+	//일반함수
+	var foo = function(){console.log("foo");}
+	foo();
+	
+	//화살표 함수 
+	//매개변수(parameter) 없는 경우
+	var bar = () => console.log("bar");
+	bar(); 
+	
+	//매개변수 1개
+	//var foo2 = function(x){x}
+	var foo2 = x => x;
+	
+	var hello;
+	hello = (val) => "Hello " + val;
+	document.getElementById("demo").innerHTML = hello("Universe!");
+	
+	//매개변수가 여러개인 경우
+	var foo3 = (a,b) => {return a + b};
+	
+	var foo4 = (a,b) => {var c = d; return a + b + c};	
+	
+	//객체를 반환할 경우
+	var foo5 = () => ({a:1,b:2,c:3});
+	foo5();
+	
+	//즉시 실행함수
+	(
+		function(){
+			//구문
+		}()		
+	);
+	
+	//즉시 실행함수를 화살표 함수로 만들면
+	(
+		() => {}	
+	)();
+	
+	//java: 람다식
+	//C#, java8, coffeeScript 등에서 이미 축약형 함수 표현식을 사용하고 있다
+	
+	//for(let i = 0; i < 10; i++){}
+	//for(let index in Array){index}
+	//for(let key in Object){}
+	//+
+	//Array.isArray();
+	//Array.forEach();
+	//Array.map();
+	//+ Arrow Function과 결합하여 사용할 수 있다면 좋음
+	function myFunction() {
+	  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+	  var x = document.getElementById("demo");
+	  x.innerHTML = Array.isArray(fruits); //true, false
+	}
+	
+	//forEach()
+	var txt = "";
+	var numbers = [45, 4, 9, 16, 25];
+	numbers.forEach(myFunction);
+	document.getElementById("demo").innerHTML = txt;
+
+	/* function myFunction(value) {
+	  txt = txt + value + "<br>"; 
+	} */
+	
+	function myFunction(value, index, array){
+		txt = txt + "(" + value + ") [" + index + "] [" + array + "]<br>";
+	}
+	
+	//map()
+	var numbers1 = [45, 4, 9, 16, 25];
+	var numbers2 = numbers1.map(myFunction);
+
+	document.getElementById("demo").innerHTML = numbers2;
+
+	function myFunction(value, index, array) {
+	  return value * 2;
+	}
+	
+	//https://www.w3schools.com/js/js_es5.asp >> 여기를 참조합니다. forEach(), map()
+	
+	var evens = [2,4,6,8];
+	var odds = evens.map(val => val + 1);
+	console.log(odds);
+	
+	var nums = evens.map((val, index) => val + index);
+	console.log(nums);
+	
+	var fives = [];
+	evens.forEach(val => {
+		if(val % 2 === 0){
+			fives.push(val);
+		}
+	})
+	console.log(fives);
+	
+</script>
+</html>

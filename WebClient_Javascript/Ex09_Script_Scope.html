@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Scope</title>
+	<script type="text/javascript">
+		
+	</script>
+</head>
+<body>
+	<p>Outside myFunction() carName is undefined.</p>
+
+	<p id="demo1"></p>	
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	
+</body>
+<script>
+	var gname = "world"; //Global Variable
+	
+	myFunction();
+	
+	function myFunction() {
+		//[사용 금지]
+		aaa="아무개"; //함수 안에 타입이 없는 변수 : Global
+		console.log(aaa);
+		
+	  //Local
+	  var carName = "Volvo"; ////Local Variable
+	  document.getElementById("demo1").innerHTML = typeof(carName) + " " + carName+"<hr>";
+	  //Global
+	  document.getElementById("demo3").innerHTML = typeof(gname) + " " + gname;
+	}
+	document.getElementById("demo2").innerHTML = typeof(carName)+"<hr>";
+	//Global
+	document.getElementById("demo4").innerHTML = typeof(gname);
+	
+	/*
+		ES6 이전: var만 이용
+		ES2015 두가지 키워드: let, const (block 영역에서 사용할 수 있는 변수타입을 만들었음)
+		1. Global
+		2. Local
+		3. new block: let, const
+	*/
+	
+	
+	
+</script>
+</html>

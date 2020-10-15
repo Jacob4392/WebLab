@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function</title>
+	<script type="text/javascript">
+		//java: public void print(){}
+		//java: public String print(){return "";}
+		//java: public int print(int num, int num2){return num + num2}
+		
+		//javascript: void(x), retun type(x) //유연한 언어이기 때문에 이렇게 사용 가능
+		
+		//클릭 사건발생(함수호출)
+		function callConfirm(){
+			if(window.confirm('작업내용')){ //confirm 내장함수(확인,취소) 
+				alert('삭제합니다'); //확인버튼 누르면 return true
+			}else{
+				alert('취소합니다'); //취소버튼 누르면 return false
+			}
+		}
+		//Q 확인, 취소 버튼의 텍스트명을 바꿀 수 있을까?
+		
+				
+		//새로운 창을 open하고 싶을 때	
+		function showPopup(){
+			window.open("Ex06_popup.html","zipcode","width=200,height=200"); 
+			//새로운 페이지를 띄워줌 (1st 파라미터: 띄워줄 페이지이름)
+			
+			/*
+			참고사이트: https://www.w3schools.com/jsref/met_win_open.asp
+			window.open(URL, name, specs, replace)
+			Use the close() method to close the window.
+			https://www.w3schools.com/jsref/met_win_close.asp
+			specs: 브라우저마다 지원여부가 다름(기능이 잘 적용이 안된다면 확인해볼 필요가 있다)
+			specs: 주소창, 창의 크기 옵션 등등 설정...
+			*/
+		}
+		
+		//위에서 배웠던 open 함수를 변수에 담아서 활용하고 싶을때 (변수 이름만 적어주면 되도록) 
+		function myFunc(){
+			var mywindow = window.open("Ex06_popup.html","zipcode","width=500,height=200")
+			//window.open의 실행결과(주소값)가 mywindow에 들어가 있다. 
+			//mywindow가 새 창의 주소이다(팝업창) 이 변수를 통해 띄워진 창에 접근할 수 있다
+			mywindow.document.write("<p>this is zipcode window</p>");
+		}
+		
+		
+		//특정 시간이 지나면 특정 URL로 이동하고 싶을 때
+		//java: public void goUrlTime(String url){return "naver";}
+		function goUrlTime(url){ //javascript의 parameter는 타입없이 변수명만 적는다
+			window.setTimeout("location.href='"+ url + "'", 3000) 
+			//바깥쪽이 double, 안쪽이 single
+			//setTimeout 내장함수 (3초가 지나면 1번째 parameter로 이동함) 2번째 parameter는 시간입력
+			//location.href = 'http://www.naver.com'
+		}
+		
+		//Console창 확인
+		//java: public int myfun(int i, int j, int k){return i+j+k;}
+		function myfun(i,j,k){
+			return i+j+k;
+		}
+		var result = myfun(10,20,30);
+		console.log("myfun call: " + result);  //myfun call: 60
+		
+		//*** 익명함수(함수의 이름이 없음) //function changeColor() 원래는 이렇게 하던 것
+		//함수를 만드는 방법 중에 하나
+		changeColor = function(){ //changeColor : 함수의 주소를 갖고 있는 변수
+			window.document.bgColor="silver";
+			window.document.fgColor="red";
+			
+		}
+		
+	</script>
+</head>
+<body>
+	<h3>내장함수, 사용자 정의 함수 사용하기</h3>
+	<button onclick="callConfirm()">클릭 사건발생(함수호출)</button><br>
+	<button onclick="showPopup()">팝업창</button><br>
+	<button onclick="myFunc()">팝업객체</button><br>
+	<button onclick="goUrlTime('http://www.daum.net')">3초후 주소이동</button><br>
+	<button onclick="changeColor()">익명함수</button><br>
+	<button onclick=""></button><br>
+	
+	
+	
+</body>
+</html>
