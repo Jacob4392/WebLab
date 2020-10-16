@@ -21,7 +21,7 @@
 	2. Local Storage (map (key:value))
 	
 	Server (Web Server: Apache Tomcat)
-	1. server memory : session 객체 (접속한 사용자 식별값, 개인정보) >> 서버 리부팅, 꺼지거나
+	1. server memory : session 객체 (사용자마다 고유한 정보를 저장하고 관리하고 싶을 때, 접속한 사용자 식별값, 개인정보) >> 서버 리부팅, 꺼지거나 (메모리는 휘발성)
 	2. server memory : Application 객체 (접속한 사용자의 공유자원, 개인정보) >> 서버 리부팅, 꺼지거나
 	3. server 영속적: login.txt >> 관리가 힘들어요
 	4. DB server: 보안, 관리, 영속적			
