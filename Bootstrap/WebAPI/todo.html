@@ -13,7 +13,7 @@
           <h1>todo list</h1>
           <form onsubmit="inputKey()"></form>
           <input id="newTodo" class="new-todo" placeholder="What needs to be done?">
-          <button type="submit">검색하기</button> 
+          <!-- <button type="submit">검색하기</button>  -->
           </form>
         </header>
         <section id="main">
@@ -72,7 +72,7 @@
             })
             console.log(document.getElementsByClassName("new-todo").value);
 
-            //console.log(document.getElementsByClassName("todoItem").length);
+            //console.log(document.getElementsByClassName("todoItem").length); 
             var indexKeyword = document.getElementsByClassName("todoItem").length;
             //console.log(document.getElementsByClassName("edit")[indexKeyword-1].value);
             var keyword = document.getElementsByClassName("edit")[indexKeyword-1].value;
