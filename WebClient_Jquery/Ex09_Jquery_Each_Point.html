@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	/* 
+		javascript: for(let index in Array){Array[index]}
+		javascript(Object): for(let key in jsonObj){jsonObj[key]}
+		javascript: array.forEach(function(currentValue, index, arr){})
+		
+		Jquery : each() 반복구문(iterator) 위의 세가지를 커버함
+		Jquery:
+		1. $(selector).each(function(){this 활용});
+		2. $(selector).each(function(index){this 활용});
+		3. $(selector).each(function(index, element){element}); //70% 편함
+	*/
+	
+	$(document).ready(function(){
+/* 		$('p').each(function(){
+			//여기서 callback 함수 3번 호출됨
+			console.log("this: " + $(this).text());
+		});
+		
+		$('p').each(function(index){
+			//여기서 callback 함수 3번 호출됨
+			console.log("index: " + index);
+			console.log("this: " + $(this).text());
+		}); */
+		
+		$('#btn').click(function(){
+			$('p').each(function(index, element){ //여기서 element -> p태그 전체
+				//여기서 callback 함수 3번 호출됨
+				console.log("index: " + index);
+				console.log(element);
+				console.log("element: " + $(element).text());
+			});
+		});
+		
+
+	});
+
+	
+</script>
+</head>
+<body>
+	<a href="Ex08_Jquery_Form.html">이전</a>
+	<a href="Ex09_Jquery_Each_Point.html">다음</a><br>
+	<p>Ex09_Jquery_Each_Point.html</p><br><br>
+	
+
+	<p>java</p>
+	<p>jsp</p>
+	<p>oracle</p>
+	<input type="button" value="click" id="btn">
+</body>
+</html>
