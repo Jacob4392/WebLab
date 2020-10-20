@@ -23,6 +23,8 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <link href="assets/css/Keyword-Search.css" rel="stylesheet">
+
   <!-- =======================================================
   * Template Name: DevFolio - v2.3.0
   * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
@@ -106,17 +108,17 @@
                   </div>
                   <div class="skill-mf">
                     <p class="title-s"> Basic Learning Progress</p>
-                    <span>HTML</span> <span class="pull-right">66%</span>
+                    <span>HTML</span> <span class="pull-right">80%</span>
                     <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <span>CSS3</span> <span class="pull-right">54%</span>
+                    <span>CSS3</span> <span class="pull-right">66%</span>
                     <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 54%" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <span>JAVASCRIPT</span> <span class="pull-right">20%</span>
+                    <span>JAVASCRIPT</span> <span class="pull-right">50%</span>
                     <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <span>JAVA</span> <span class="pull-right">90%</span>
                     <div class="progress">
@@ -534,22 +536,45 @@
               <div class="col-sm-12">
                 <div class="title-box text-center">
                   <h3 class="title-a">
-                    Blog
+                    Web API
                   </h3>
                   <p class="subtitle-a">
-                    Website available to learn
+                    Geolocation API
                   </p>
                   <div class="line-mf"></div>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-12">
+                <div class="map_wrap">
+                  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+              
+                  <div id="menu_wrap" class="bg_white">
+                      <div class="option">
+                          <div>
+                              <form onsubmit="searchPlaces(); return false;">
+                                  키워드 : <input type="text" value="비트캠프 서초" id="keyword" size="15"> 
+                                  <button type="submit">검색하기</button> 
+                              </form>
+                          </div>
+                      </div>
+                      <hr>
+                      <ul id="placesList"></ul>
+                      <div id="pagination"></div>
+                  </div>
+                </div>
+                
+                  <div class="hAddr">
+                      <span class="title">지도중심기준 행정동 주소정보</span>
+                      
+                  </div>
+              
+              <p><em>지도 중심좌표가 변경되면 지도 정보가 표출됩니다</em></p>
+              <p id="result"></p>
+                <br><br>
 
               </div>
-              
-              
-    
             </div>
           </div>
         </section><!-- End Blog Section -->
@@ -598,6 +623,11 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=659535c21f6f79eb81bf89cfc7f8b33a&libraries=services"></script>
+  <script src="assets/js/Keyword-Search.js"></script>
+  <script src="assets/js/Address-Info.js"></script>
+  <script src="assets/js/Geolocation-Marker.js"></script>
+  <script src="assets/js/Change-Center.js"></script>
 </body>
 
 </html>
