@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	//https://www.w3schools.com/jquery/jquery_dom_add.asp
+	/*
+		append() - Inserts content at the end of the selected elements
+		prepend() - Inserts content at the beginning of the selected elements
+		after() - Inserts content after the selected elements
+		before() - Inserts content before the selected elements
+		
+		어떤 요소를 원하는 곳에 추가하고 싶을 때 사용
+		<p>A</p> >> B append() => <p>AB</p> => C append() => <p>ABC</p>
+		//끝나는 태그의 컨텐츠 바로 뒤에
+		<p>A</p> >> B prepend() => <p>BA</p>
+		//시작 태그의 컨텐츠 바로 앞에
+		<p>A</p> >> B after() => <p>A</p>B
+		<p>A</p> >> B before() => B<p>A</p>
+		
+		태그의 안쪽에 적용 : append, prepend
+		태그의 바깥쪽에 적용: after, before
+	*/
+	
+	$(function(){
+		$('#btn1').click(function(){
+			$('p').append("<b>append text</b>");
+		});
+		$('#btn2').click(function(){
+			//$('ol').append("<li>append text</li>");
+			$('ol').prepend("<li>append text</li>");
+		});
+	});
+		
+</script>
+</head>
+<body>
+	<a href="Ex10_Jquery_Each_API.html">이전</a>
+	<a href="Ex12_Jquery_Remove.html">다음</a><br>
+	<p>Ex11_Jquery_Append.html</p><br><br>
+
+	<p>This is a paragraph.</p>
+	<p>This is another paragraph.</p>
+	
+	<ol>
+	  <li>List item 1</li>
+	  <li>List item 2</li>
+	  <li>List item 3</li>
+	</ol>
+	
+	<button id="btn1">Append text</button>
+	<button id="btn2">Append list items</button>
+</body>
+</html>

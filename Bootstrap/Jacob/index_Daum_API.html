@@ -47,12 +47,11 @@
         #centerAddr {display:block;margin-top:2px;font-weight: normal;}
         .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
     </style>
-    
 </head>
 <body>
     
-    
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=659535c21f6f79eb81bf89cfc7f8b33a&libraries=services"></script>
+    
     <!-- 키워드로 장소검색하고 목록으로 표출하기-->
     <div class="map_wrap">
         <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -402,8 +401,6 @@
     <!-- geolocation으로 마커 표시하기 -->
     <script>
 
-        var latInfo;
-        var lonInfo;
         // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
         if (navigator.geolocation) {
             
@@ -412,10 +409,8 @@
                 
                 var lat = position.coords.latitude, // 위도
                     lon = position.coords.longitude; // 경도
-                    latInfo = position.coords.latitude;
-                    lonInfo = position.coords.longitude;
-                    //console.log(lon);
-                    
+                    console.log(lat);
+                    console.log(lon);
                 var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
                     message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
                 
@@ -457,8 +452,7 @@
             map.setCenter(locPosition);      
         }    
 
-        var latClickInfo;
-        var lonClickInfo;
+
         /////////////////////////////////////////////////
         // 지도에 클릭 이벤트를 등록합니다
         // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
@@ -467,18 +461,9 @@
 
             // 클릭한 위도, 경도 정보를 가져옵니다 
             var latlng = mouseEvent.latLng;
-            //console.log(latlng.getLat());
-            latClickInfo = latlng.getLat();
-            lonClickInfo = latlng.getLng();
-            //console.log(latClickInfo);
-            //console.log(lonClickInfo);
-            //console.log(Math.pow(Math.abs(69.1*(latInfo-latClickInfo)),2));
-            //console.log(Math.pow(Math.abs(53*(lonInfo-lonClickInfo)),2));
-            //console.log(Math.sqrt(Math.pow(Math.abs(69.1*(latInfo-latClickInfo)),2) + Math.pow(Math.abs(53*(lonInfo-lonClickInfo)),2)).toFixed(2));
-            var distance = (Math.sqrt(Math.pow(Math.abs(69.1*(latInfo-latClickInfo)),2) + Math.pow(Math.abs(53*(lonInfo-lonClickInfo)),2))*1.609344).toFixed(2);
-            var message = '클릭한 위치의 위도는 ' + latlng.getLat().toFixed(2) + ' 이고, ';
-            message += '경도는 ' + latlng.getLng().toFixed(2) + ' 이고,<br>';
-            message += '내 위치와의 거리는 ' + distance + "km입니다.";
+            
+            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+            message += '경도는 ' + latlng.getLng() + ' 입니다';
             
             var resultDiv = document.getElementById('result2'); 
             resultDiv.innerHTML = message;

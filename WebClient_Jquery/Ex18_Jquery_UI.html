@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 필수 jquery.min.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Jquery UI >> css(디자인), js(이벤트 기능) -->
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#datepicker').datepicker(
+			{
+				dateFormat: "yy-mm-dd",
+				numberOfMonths: 3,
+				onSelect: function(date){alert("onSelect: " + date);},
+				onClose: function(date){
+					let currentdate = $('#datepicker').datepicker('getDate');
+					console.log(date + "/" + currentdate);
+					//2020-10-13/Tue Oct 13 2020 00:00:00 GMT+0900 (대한민국 표준시)
+					let date2 = new Date(currentdate);
+					alert("onClose: " + date2.getFullYear()+"/"+date2.getDate());
+				}
+			}		
+		);
+	});
+	
+
+</script>
+</head>
+<body>
+	<a href="Ex17_Jquery_UI.html">이전</a>
+	<a href="Ex19_Jquery_UI_DatePicker.html">다음</a><br>
+	<p>Ex18_Jquery_UI.html</p><br><br>
+	
+	<p>Date:<input type="text" id="datepicker"></p>
+	
+</body>
+</html>
