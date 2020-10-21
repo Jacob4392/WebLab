@@ -154,3 +154,17 @@
   });
 
 })(jQuery);
+
+$(document).ready(function(){
+
+    $('#btn1').click(function(){
+      $("#displ1").css("display","block");
+    });
+    $('#btn2').click(function(){
+      $("#displ2").css("display","block");
+    });
+    $('#btn3').click(function(){
+      $("#displ1").css("display","none");
+      $("#displ2").css("display","none");
+    });
+});

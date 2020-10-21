@@ -1374,3 +1374,7 @@ footer .credits {
 footer .credits a {
   color: #fff;
 }
+
+#displ1, #displ2 {
+  display: none;
+}

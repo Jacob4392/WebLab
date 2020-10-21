@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 필수 jquery.min.js -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Jquery UI >> css(디자인), js(이벤트 기능) -->
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#datepicker').datepicker({
+			dateFormat: "yy년mm월dd일"
+		});
+		
+		$('#dialog').dialog({
+			autoOpen: false,
+			show: {effect:"blind",duration: 2000},
+			hide: {effect:"explode",duration: 1000},
+			buttons: {
+				"submit":function(){
+					let eventname = $('#event_name').val();
+					let eventdate = $('#event_date').val();
+					//부모창
+					$('<h3></h3>').html(eventname + ":" + event(date).appendTo('#output'));
+					//태그를 만들어냄
+					$('#dialog').dialog('close'); 
+				},
+				"reset": function(){
+					$('#event_name').val();
+					$('#event_date').val();
+				},
+				"cancel": function(){
+					$('#event_name').val();
+					$('#event_date').val();
+					$('#dialog').dialog('close');
+				}
+				//각각의 이벤트에 대한 입력 완료
+			},
+			//resizable: false,
+			modal: true //팝업을 닫기 전까지는 부모창 접근(작업) 불가
+		});
+		
+		$('#open_button').click(function(){
+			$('#dialog').dialog("open");
+		});
+	});
+	
+</script>
+</head>
+<body>
+	<a href="Ex21_Jquery_UI_Dialog.html">이전</a>
+	<a href="">다음</a>
+	<br>
+	<p>Ex22_Jquery_UI_Dialog.html</p><br><br>
+	
+<h3 id="open_button">일정생성</h3>
+<hr>
+<div id="output">
+
+</div>
+
+<!-- popup div -->
+<div id="dialog" title="팝업창">
+	<h3>일정만들기</h3>
+	<label for="event_name">일정이름</label>
+	<input type="text" id="event_name"><br>
+	<label for="event_date">일정날짜</label>
+	<input type="text" id="event_date"><br>
+	
+</div> 
+
+
+</body>
+</html>

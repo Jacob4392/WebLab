@@ -7,6 +7,10 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
+
+var latInfo;
+var lngInfo;
+
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 if (navigator.geolocation) {
     
@@ -15,6 +19,8 @@ if (navigator.geolocation) {
         
         var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
+            latInfo = position.coords.latitude;
+            lngInfo = position.coords.longitude;
         
         var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
             message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다

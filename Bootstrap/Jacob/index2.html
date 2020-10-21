@@ -474,9 +474,9 @@
             //console.log(Math.pow(Math.abs(69.1*(latInfo-latClickInfo)),2));
             //console.log(Math.pow(Math.abs(53*(lonInfo-lonClickInfo)),2));
             //console.log(Math.sqrt(Math.pow(Math.abs(69.1*(latInfo-latClickInfo)),2) + Math.pow(Math.abs(53*(lonInfo-lonClickInfo)),2)).toFixed(2));
-            var distance = (Math.sqrt(Math.pow(Math.abs(69.1*(latInfo-latClickInfo)),2) + Math.pow(Math.abs(53*(lonInfo-lonClickInfo)),2))*1.609344).toFixed(2);
-            var message = '클릭한 위치의 위도는 ' + latlng.getLat().toFixed(2) + ' 이고, ';
-            message += '경도는 ' + latlng.getLng().toFixed(2) + ' 이고,<br>';
+            var distance = (Math.sqrt(Math.pow(Math.abs(69.1*(latInfo-latClickInfo)),2) + Math.pow(Math.abs(53*(lonInfo-lonClickInfo)),2))*1.609344).toFixed(3);
+            var message = '클릭한 위치의 위도는 ' + latlng.getLat().toFixed(3) + ' 이고, ';
+            message += '경도는 ' + latlng.getLng().toFixed(3) + ' 이고,<br>';
             message += '내 위치와의 거리는 ' + distance + "km입니다.";
             
             var resultDiv = document.getElementById('result2'); 
@@ -506,7 +506,7 @@
         var latlng = map.getCenter(); 
 
         var message = '<p>지도 레벨은 ' + level + ' 이고</p>';
-        message += '<p>중심 좌표는 위도 ' + latlng.getLat() + ', 경도 ' + latlng.getLng() + '입니다</p>';
+        message += '<p>중심 좌표는 위도 ' + latlng.getLat().toFixed(3) + ', 경도 ' + latlng.getLng().toFixed(3) + '입니다</p>';
 
         var resultDiv = document.getElementById('result');
         resultDiv.innerHTML = message;

@@ -1,12 +1,12 @@
-//좌표로 주소를 얻어내기
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 1 // 지도의 확대 레벨
-    };  
+// //좌표로 주소를 얻어내기
+// var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+//     mapOption = {
+//         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+//         level: 1 // 지도의 확대 레벨
+//     };  
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+// // 지도를 생성합니다    
+// var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
@@ -25,9 +25,10 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
             detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
             
             var content = '<div class="bAddr">' +
+
                             detailAddr + 
                         '</div>';
-
+            
             // 마커를 클릭한 위치에 표시합니다 
             marker.setPosition(mouseEvent.latLng);
             marker.setMap(map);
