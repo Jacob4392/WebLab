@@ -34,12 +34,12 @@
 
         * {margin: 0; padding: 0;}
         #wrap {width: 100%;}   
-        header {width: 100%; height: 0px;  background: #81c784;}
-        nav {width: 100%; height: 50px; margin-top:100vh; background: #95df99;}
-        aside {float: left; width: 30%; height: 700px; background: #66bb6a;}
-        section {float: left; width: 40%; height: 700px; background: #4caf50;}
-        article {float: left; width: 30%; height: 700px; background: #43a047;}
-        footer {clear: both; width: 100%; height: 150px; text-align: center; background: #388e3c;}
+        header {width: 100%; height: 0px;  background: white;}
+        nav {width: 100%; height: 50px; margin-top:100vh; text-align: center; background: white;}
+        aside {float: left; width: 30%; height: 700px; text-align: center; background: white;}
+        section {float: left; width: 40%; height: 700px; text-align: center; background: white;}
+        article {float: left; width: 30%; height: 700px;  background: white;}
+        footer {clear: both; width: 100%; height: 150px; text-align: center; background: white;}
 
          /* 화면 너비 0 ~ 1200px */
          @media (max-width: 1220px){
@@ -132,53 +132,101 @@
 
         <div class="container">
           <h2>Contents</h2>
-          <p>source code on Github while learning</p>
+          <p>contents what I have learned</p>
           <div id="accordion">
             <div class="card">
               <div class="card-header">
                 <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                  MyDos 프로그램
+                  What is jQuery?
                 </a>
               </div>
               <div id="collapseOne" class="collapse show" data-parent="#accordion">
                 <div class="card-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doquat.
+                  jQuery is a fast, small, and feature-rich JavaScript library.
+                  It makes things like HTML document traversal and manipulation,
+                  event handling, animation, and Ajax much simpler with and easy-to-use API
+                  that works across a multitude of browsers. With a combination of versatility
+                  and extensibility, jQuery has changed the way that millions of people write
+                  JavaScript.
                 </div>
               </div>
             </div>
             <div class="card">
               <div class="card-header">
                 <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                  Computer 설계도 Sketch
+                  What is JSP?
               </a>
               </div>
               <div id="collapseTwo" class="collapse" data-parent="#accordion">
                 <div class="card-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Java Server Pages(JSP) is a server-side programming technology
+                  that enables the creation of dynamic, platform-independent method
+                  for building Web-based applications. JSP have access to the entire
+                  family of Java APIs, including the JDBC API to access enterprise
+                  databases.
                 </div>
               </div>
             </div>
             <div class="card">
               <div class="card-header">
                 <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                  Pizza 주문 프로그램
+                  What is XML?
                 </a>
               </div>
               <div id="collapseThree" class="collapse" data-parent="#accordion">
                 <div class="card-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  The Extensible Markup Language(XML) is a simple text-based format
+                  for representing structured information: documents, data, configuration, books
+                  transactions, invoices, and much more. It was derived from an older
+                  standard format called SGML(ISO 8879), in order to be more suitable
+                  for Web use.
                 </div>
               </div>
             </div>
             <div class="card">
               <div class="card-header">
-                <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                  Open API 활용하기(JSON)
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
+                  JSON
                 </a>
               </div>
-              <div id="collapseThree" class="collapse" data-parent="#accordion">
+              <div id="collapseFour" class="collapse" data-parent="#accordion">
                 <div class="card-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  JavaScript Object Notation(JSON) is a data-interchange format.
+                  Although not a strict subset, JSON closely resembles a subset of
+                  JavaScript syntax. Though many programming languages support JSON,
+                  JSON is especially useful for JavaScript-based apps, including
+                  websites and browser extensions.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
+                  Servlet
+                </a>
+              </div>
+              <div id="collapseFive" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                  Servlet is a small Java program that runs within a Web server.
+                  Servlets receive and response to requests from Web clients, usually
+                  across HTTP, the HyperText Transfer Protocol. To implement this interface,
+                  you can write a generic servlet that extends <b>javax.servlet.GenericServlet</b>
+                  or an HTTP servlet that extends <b>javax.servlet.http.HttpServlet.</b>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseSix">
+                  Ajax
+                </a>
+              </div>
+              <div id="collapseSix" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                  AJAX is an acronym for Asynchronous JavaScript and XML. It is a group
+                  of inter-related technologies like JavaScript, DOM, XML, HTML/XHTML, CSS,
+                  XMLHttpRequest etc. AJAX allows you to send and receive data asynchronously
+                  without reloading the web page. So it is fast.
                 </div>
               </div>
             </div>
