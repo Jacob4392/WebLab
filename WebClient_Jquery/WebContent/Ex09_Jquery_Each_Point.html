@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	/* 
+		javascript: for(let index in Array){Array[index]}
+		javascript(Object): for(let key in jsonObj){jsonObj[key]}
+		javascript: array.forEach(function(currentValue, index, arr){})
+		
+		Jquery : each() 반복구문(iterator) 위의 세가지를 커버함
+		Jquery:
+		1. $(selector).each(function(){this 활용});
+		2. $(selector).each(function(index){this 활용});
+		3. $(selector).each(function(index, element){element}); //70% 편함
+		//처음부터 요소를 잡아놓고 돌리는 것 (selector -> p태그 등)
+		
+		Jquery:
+		1. $.each(Array or Object, function(){this 활용});
+		2. $.each(Array or Object, function(index){this 활용});
+		3. $.each(Array or Object, function(index, element){element}); //70% 편함
+		//요소를 돌릴 때 요소를 잡음
+		parameter가 json 객체라면
+		var obj = {name:"홍길동", age:100}
+		
+		$(obj).each(function(key, value){ }); //내가 갖고 있는 페이지의 요소를 잡을 떄 사용
+		$.each(obj, function(key, value){ });//거의 왠만한 경우 사용
+		
+	*/
+	
+	$(document).ready(function(){
+ 		$('p').each(function(){
+			//여기서 callback 함수 3번 호출됨
+			//console.log("this: " + $(this).text());
+		});
+		
+		$('p').each(function(index){
+			//여기서 callback 함수 3번 호출됨
+			console.log("index: " + index);
+			console.log("this: " + $(this).text());
+			
+			//index 활용하기(중복값이 없다)
+			
+			//$(this).attr("id","param-" + index);
+			//$(this).attr("style","color:red");
+			//응용() attr>> 속성 여러개를 부여하고 싶다면 >> jquery parameter json객체
+			//반복된다면 객체형태로 만들면 어떨까?
+			//jquery는 70%이상이 객체를 받을 수 있도록 설계되어 있음
+			$(this).attr(
+				{
+					"id":"param-"+index,
+					"style":"color:red"
+				}	
+			);
+		}); 
+		
+ 		//$('#btn').click(function(){
+			$('p').each(function(index, element){ //여기서 element -> p태그 전체
+				//여기서 callback 함수 3번 호출됨
+				console.log("index: " + index);
+				console.log(element);
+				console.log("element: " + $(element).text());
+			});
+		//}); 
+		
+		$('#btn').click(function(){ //콜백함수 : 명시적으로 호출하는 것이 아니라 상황에 따라 호출된다
+			//function handler 내가 원하는 방향으로 함수를 사용하기 때문에 이렇게 부르기도 함
+			alert($('#param-1').text());
+		});
+
+		/*
+			let arr = ['사과','배','수박']; Array
+			let obj = {} JsonObj
+			let arrobj = [{},{},{}]; ArrayObject
+		*/
+		
+		var array = [
+			{"name":"naver","link":"www.naver.com"},
+			{"name":"daum","link":"www.daum.net"},
+			{"name":"bit","link":"www.bit.or.kr"}
+		];
+		//문제
+		//$.each(Array or Object, function(index, element){element});
+		//활용해서 name값, link 값을 출력하세요
+		
+		$.each(array, function(index, element){
+			console.log(index);
+			console.log(element); //객체.속성명, 객체["속성명"]
+			console.log(element.name + "/" + element["link"]);
+		})
+		
+
+/* 		$(array).each(function(index, element){
+			console.log(index);
+			console.log(element); //객체.속성명, 객체["속성명"]
+			console.log(element.name + "/" + element["link"]);
+		});	 */
+		
+		let boardobj = {
+				values:[
+					{no:1, title:"hello world"},
+					{no:2, title:"korea"},
+					{no:3, title:"bit world"},
+				],
+				search:"검색"
+		}
+		
+		//1. $.each() 사용해서 no 값 , title  값을 출력하세요
+		$.each(boardobj.values, function(index,element){
+			console.log(index + "/" + element.no + " , " + element["title"]);
+		});
+
+		
+		//2. $.each(boardobj) >> key , value 출력
+		$.each(boardobj, function(key,value){
+			console.log(key + "/" + value);
+		});
+
+		
+		//3. $.each() no, title, search 값을 출력하세요 
+		//hint) $.each(){each(){}}
+/* 		$.each(boardobj, function(key,value){
+			$.each(boardobj.search, function(key,value){
+				console.log(key + "/" + value);
+			});
+		}); */
+
+		$.each(boardobj, function(key,value){
+			//value값으로 >> text, Array, {}Object 가 올 수 있다
+			//value 값에 따라서 type에 대한 비교가 필요하다
+			if(typeof(value) == "object"){
+				$.each(value, function(index, element){
+					console.log(index + "/" + element.no + " , " + element["title"]);
+				});
+			}else{ //value값이 text인 경우
+				console.log(key + "/" + value);
+			}
+		});
+		
+	});
+
+	
+</script>
+</head>
+<body>
+	<a href="Ex08_Jquery_Form.html">이전</a>
+	<a href="Ex10_Jquery_Each_API.html">다음</a><br>
+	<p>Ex09_Jquery_Each_Point.html</p><br><br>
+	
+
+	<p>java</p>
+	<p>jsp</p>
+	<p>oracle</p>
+	<input type="button" value="click" id="btn">
+</body>
+</html>

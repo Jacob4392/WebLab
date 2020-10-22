@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Content</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){ 
+			$('#btn1').click(function(){
+				alert("text: " + $('#test').text()); //getter(텍스트만 가지고옴)
+			}); //안녕하세요정말방가방가
+			
+			$('#btn2').click(function(){
+				alert("text: " + $('#test').html()); //getter(태그인정)
+			}); //안녕하세요<b>정말</b>방가방가
+			
+			$('#btn3').click(function(){
+				$('#test').html("<div>AAAAAA</div>");
+			});//AAAAAA
+			
+/* 			$('#btn3').click(function(){
+				$('#test').text("<div>AAAAAA</div>");
+			});  //<div>AAAAAA</div> */
+		});
+		
+	</script>
+</head>
+<body>
+	<a href="Ex06_Jquery_Method.html">이전</a>
+	<a href="Ex08_Jquery_Form.html">다음</a><br>
+	<p>Ex07_Jquery_Content.html</p><br><br>
+
+	<p id="test">안녕하세요<b>정말</b>방가방가</p>
+	<button id="btn1">show text</button>
+	<button id="btn2">show html</button>
+	<button id="btn3">html</button>
+	
+</body>
+</html>
+
+

@@ -1,0 +1,236 @@
+
+<html>
+    <head>
+     <title> 회원가입 </title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <!--  
+         조별과제 : 
+       javascript 를 사용하여 유효성 검증 코드를 만드시고
+       MemberJoinOK.jsp 를 통해서 데이터 받아서 결과 출력하세요
+        
+       userId : keyup 이벤트  정해진 표현에 맞지 않으면 ID 추가 입력
+       ex) let id ="정규표현식" 
+       ex) if(id.test($(this).val()) != true) { 확인요청 } else {}
+       
+       userPass : keyup 이벤트에서 정해진 표현과 일치 하지 않으면 (정규표현 가능)
+       
+       userPassCheck : keyup  >> userPass 같은 값인지 확인 일치여부 확인
+       
+       userEmail : keyup 이벤트에서 email 형식과 일치여부 확인
+       
+       userPhone : keyup 이벤트에서 phone 형식과 일치여부 확인
+       
+       
+       submit 전송시 
+       userId , userPass , userPassCheck , userEmail , userPhone
+       , userSsn1 , userSsn2 , userZipCode , userPhone
+          값이 입력되지 않으면 다시 입력을 요청
+     -->
+     <style>
+       body{font-family:"malgun gothic";font-size:9pt;}
+       th { text-align:right; background-color:#dbdbdb}
+       th.title { text-align:center; font-size:12pt;background-color:#ffffff;}
+     </style>
+     <script>
+         window.onload = function(){
+             let signForm = document.getElementById("signForm"); //form 
+             let submit = document.getElementById("submit"); //submit 버튼
+
+             let regex1 = /^[a-zA-Z0-9]{3,16}$/;//아이디 비밀번호 정규표현식
+             let regex2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;//이메일 정규표현식
+             let regex3 = /^010[0-9]{8}$/;//전화번호 정규표현식
+             let regex4 = /^[0-9]{2}$/;//생년월일 정규표현식
+             let regex5 = /^[0-9]{6}$/;//주민번호 임시 앞자리
+           //let regex5 = /^[0-9]{2}d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|[3][01])$/; //주민번호 앞자리 정규표현식
+             let regex6 = /^[0-9]{7}$/;//주민번호 뒷자리 정규표현식
+
+             
+
+             userIdKeyup = () => {
+                 if(signForm.userId.value.length>=3 && signForm.userId.value.length <= 20){
+                    if(!regex1.test(signForm.userId.value)){
+                        alert("아이디 형식이 잘못됨");
+                        signForm.userId.value = null;
+                        signForm.userId.focus();
+                    }
+                 }
+             }
+             userPassKeyup = () => {
+                 if(signForm.userPass.value.length>=3 && signForm.userPass.value.length <= 20){
+                    if(!regex1.test(signForm.userPass.value)){
+                        alert("비밀번호 형식이 잘못됨");
+                        signForm.userPass.value = null;
+                        signForm.userPass.focus();
+                    }
+                 }
+             }
+             userPhoneKeyup = () => {
+                    if((signForm.userPhone.value.length===11 && !regex3.test(signForm.userPhone.value))||signForm.userPhone.value.length>11){
+                        alert("전화번호 형식이 잘못됨");
+                        signForm.userPhone.value = null;
+                        signForm.userPhone.focus();
+                    }
+             }
+             submitCheck = () => {//리턴이 트루면 서브밋 
+                 if(signForm.userId.value.length < 3){
+                     alert("아이디가 짧다");return false;
+                 }else if(signForm.userName.value === ""){
+                    alert("이름 없니");return false;
+                 }else if(signForm.userPass.value.length < 3){
+                    alert("비밀번호가 짧다"); return false;
+                 }else if(signForm.userPass.value !==signForm.userPassCheck.value){
+                    alert("비밀번호 확인 안 하냐"); return false;
+                 }else if(!regex2.test(signForm.userEmail.value)){
+                    alert("이메일 확인 좀 해라"); return false;
+                 }else if(!regex5.test(signForm.userSsn1.value)){         //정규표현식 확인
+                    alert("주민번호 앞자리 형식이 틀렸잖니"); return false;
+                 }else if(!regex6.test(signForm.userSsn2.value)){
+                    alert("주민번호 뒷자리 형식이 틀렸잖아"); return false;
+                 }else if(signForm.userZipCode.value === ""){
+                    alert("우편번호 없니");return false;
+                 }else if(!regex3.test(signForm.userPhone.value)){
+                    alert("전화번호 형식이 틀림");return false;
+                 }else if(!regex4.test(signForm.year.value)){
+                    alert("생년월일 형식이 틀림");return false;
+                 }else{return true;}
+                 }
+               
+                   
+                   
+             
+                 
+                 
+                 
+                 
+                 
+                 
+               
+
+             userId.addEventListener("keyup", userIdKeyup);
+             userPass.addEventListener("keyup", userPassKeyup);
+             userPhone.addEventListener("keyup", userPhoneKeyup);
+         
+            
+             
+             //아이디 길이, 패스워드 길이, 패스워드랑 패스워드확인이 같은지 확인, 이메일 정규표현식 확인, 주민번호 앞 뒤 정규표현식 확인
+
+
+         }
+     </script>
+    </head>
+    <body>
+       <form name="signForm" id="signForm" method="post" action="www.naver.com" onsubmit="return submitCheck()">
+           <table>
+               <tr>
+                   <th colspan="2" class="title">회원가입</th>
+               </tr>
+               <tr>
+                   <th>아이디</th>
+                   <td>
+                       <input type="text" maxlength="20" id="userId" name="userId" title="3~16자리의 영문+숫자 조합으로 입력해주세요" placeholder="3~16자리의 영문+숫자 조합으로 입력해주세요">
+                      </td>
+                   <td class="tdid"></td>
+               </tr>
+               
+               <tr>
+                   <th>이름</th>
+                   <td>
+                       <input type="text" maxlength="20" id="userName" name="userName" title="이름" >
+                   </td>
+               </tr>
+               <tr>
+                   <th>패스워드</th>
+                   <td>
+                       <input type="password" maxlength="20" id="userPass" name="userPass" title="3~16자리의 영문+숫자 조합으로 입력해주세요" placeholder ="3~16자리의 영문+숫자 조합으로 입력해주세요">
+                   </td>
+                   <td class="tdpw"></td>
+               </tr>
+               <tr>
+                   <th>패스워드 확인</th>
+                   <td><input type="password" maxlength="20" id="userPassCheck" name="userPassCheck"  title="패스워드 확인"></td>
+                   <td class="tdpwch"></td>
+               </tr>
+               <tr>
+                   <th>성별</th>
+                   <td><input type="radio" name="gender" value="male" checked>남 
+                          <input type="radio" name="gender" value="female">여  </td>
+               </tr>
+               <tr>
+                   <th>이메일</th>
+                   <td><input type="text" maxlength="50" id="userEmail" name="userEmail"  title="이메일"></td>
+                   <td class="tdmail"></td>
+               </tr>
+               <tr>
+                   <th>주민번호</th>
+                   <td>
+                       <input type="text" maxlength="6" id="userSsn1" name="userSsn1"                 title="주민번호1"> -
+                       <input type="text" maxlength="7" id="userSsn2" name="userSsn2" title="주민번호2 ">
+                   </td>
+               </tr>
+               <tr>
+                   <th>우편번호</th>
+                   <td>
+                       <input type="text" maxlength="10" id="userZipCode" name="userZipCode" size="9" title="주소-우편번호" > 
+                       <input type="button" value="우편번호검색"  />
+                   </td> 
+               </tr>
+               <tr>
+                  <th>주소1</th>
+                   <td>
+                       <input type="text" maxlength="20" size="45" id="userAddr1" name="userAddr1" title="주소-기본주소" >
+                   </td>
+               </tr>
+               <tr>
+                   <th>주소2</th>
+                   <td>
+                       <input type="text" maxlength="20" size="45" id="userAddr2" name="userAddr2" title="주소-상세주소">
+                   </td>
+               </tr>
+               <tr>
+                   <th>핸드폰번호</th>
+                   <td>
+                       <input type="text" size="30" maxlength="20" id="userPhone" name="userPhone" title="'010','-'없이 입력하세요">
+                   </td>
+                   <td class="tdphone"></td>
+               </tr>
+               <tr>
+                   <th>취미</th>
+                   <td>
+                       <input type="checkbox" name="hobby" value="등산">등산 
+                       <input type="checkbox" name="hobby" value="자전거">자전거 
+                       <input type="checkbox" name="hobby" value="컴퓨터">컴퓨터
+                       <input type="checkbox" name="hobby" value="영화감상">영화감상
+                   </td>
+               </tr>
+               <tr>
+                   <th>생년월일</th>
+                   <td>
+                       <input type="text" name="year" id ="year"> 년
+                       <select name="month">
+                             <option value="01">01</option>
+                             <option value="02">02</option>
+                             <option value="03">03</option>
+                             <option value="04">04</option>
+                       </select> 월 
+                       <select name="day">
+                             <option value="01">01</option>
+                             <option value="02">02</option>
+                             <option value="03">03</option>
+                             <option value="04">04</option>
+                       </select> 일
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="2">
+                       <input type="submit" value="가입완료" id ="submit">    
+                       <input type="reset" value="입력취소">        
+                   </td> 
+               </tr>
+           </table>
+       </form>
+    </body>
+   </html> 
+         
+       
+                 
+

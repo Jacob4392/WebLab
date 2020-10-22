@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul id="mylist"><li>coffee</li><li>tea</li><li>milk</li></ul>
+	<button onclick="myFunc()">클릭</button>
+	<button onclick="myFunc2()">클릭2</button>
+</body>
+<script type="text/javascript">
+	function myFunc(){
+		var list = document.getElementById("mylist");
+		list.removeChild(list.childNodes[0])
+	}
+	
+	function myFunc2(){
+		var textnode = document.createTextNode("water");
+		var item = document.getElementById("mylist").childNodes[0];
+		
+		//TEST
+		//console.log(item); //<li> 중 첫번째 요소
+		//console.log(typeof(item)); //object
+		//console.log(textnode); //"water"
+		//console.log(typeof textnode); //object
+		//console.log(item.childNodes[0]); //"coffee"
+		//console.log(typeof(item.childNodes[0])); //object
+		
+		item.replaceChild(textnode, item.childNodes[0]); //water -> coffee
+	}
+
+</script>
+</html>

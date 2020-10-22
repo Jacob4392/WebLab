@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.democlass {
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<h1 class="democlass">Hello World_1</h1>
+		<h1 class="democlass">Hello World_2</h1>
+		<h1 class="democlass">Hello World_3</h1>
+	</div>
+
+<script type="text/javascript">
+	//document.getElementsByTagName("h1")[0].removeAttribute("class");
+ 
+	/*
+	 [ 1번 ]
+	 var arr = document.getElementsByTagName("h1");
+	 for(let i = 0 ; i < arr.length ; i++){
+		 console.log(i);
+		 arr[i].removeAttribute("class");
+	     console.log(arr.length);
+	     //개선된  for문 문제 >>  for(let index in arr) {}
+	 }
+	 */
+	 /*
+	[ 문제점 파악 ]
+	 var arr = document.getElementsByTagName("h1");
+	 for(let index in arr) {
+		 console.log("index : " + index);
+		 document.getElementById("div").removeChild(arr[index]);
+		 //why ?
+		 console.log("length : " + arr.length);	 //2 , 
+		
+		 //[0][1][2]
+		 //[Hello World_1][Hello World_2][Hello World_3]
+		 
+		 //[0][1]
+		 //[Hello World_2][Hello World_3]
+		 
+		 //[0]
+		 //[Hello World_3]
+		 
+		 //[]
+	 } 
+	*/ 
+	/*
+	  [	 삭제하기 ^^ ]
+		 var arr = document.getElementsByTagName("h1");
+		 for(let index in arr) {
+			 if(arr.length > 0){ //
+					 console.log(index + " / " + arr.length + " / " + (arr.length -1)) ;
+					 document.getElementById("div").removeChild(arr[arr.length -1]);
+			       }
+			 //[0][1][2]  >> [2] 삭제
+			 //[0][1]       >> [1] 삭제
+			 //[0]            >> [0] 삭제
+		 }
+	*/	 
+ 
+	/*
+	 [ 자기 자신 삭제 하기 ] 
+	var arr = document.getElementsByTagName("h1");
+	 var len = arr.length;
+	 for(let i = 0 ; i < len ; i++ ){
+		 arr[arr.length -1].remove(); //  remove()   >> 자기자신 삭제
+	 }
+    */
+	 
+
+		//복습하기 **************************************
+		var arr = document.getElementsByTagName("h1");
+	    var len = arr.length;  //length 변화하지만 len 은 변화하지 않는다
+	  	for(var i= 0 ; i < len ; i++){
+	  		console.log("len :" + len);
+	  		console.log("arr.length :" + arr.length + " - " +  "i : " + i);
+	  		console.log(arr[arr.length -1]); 
+	  		console.log("arr.length -1 : " + (arr.length -1));
+	  		console.log("***********************************");
+	  		document.getElementById("div").removeChild(arr[arr.length -1]);
+	   		//arr.length -1 >> 2,1,0
+	  	}
+	
+	  	
+	  	
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

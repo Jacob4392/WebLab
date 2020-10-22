@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		table , tr , td {
+			border: 1px solid blue;
+			border-collapse: collapse;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		//$(document).ready(function(){
+			//필요에 의해서 사용 ....
+		//});
+		//일반 javascript 함수
+		function javascriptFunc(){
+			let arrayobj=[];
+			//1. arrayobj 배열에 아래 처럼 객체를 추가해 보세요
+			/*
+			101th 홍길동  10
+			102th 김유신  20
+			103th 유관순  30
+			arrayobj 배열 객체 형태로 추가
+			[{},{},{}]
+			ex) [{th:101th , name:홍길동 , age:10}] 형식으로
+			ex) arrayobj.push({th:.. , name:.. , age:..})
+			$('table')
+			$("table > tbody > tr").each()
+			*/
+			$('table > tbody > tr').each(function(){
+				//console.log(this); //<tr><td>...</tr>
+				//console.log($(this).children()); //<td>....</td>
+				//console.log($(this).children().eq(0));
+				//console.log($(this).children().eq(0).text());
+				//console.log($(this).children().eq(1).text());
+				//console.log($(this).children().eq(2).text());
+				
+				arrayobj.push( //3번 순환
+					{
+						th:$(this).children().eq(0).text(),
+						name:$(this).children().eq(1).text(),
+						age:$(this).children().eq(2).text()
+					}		
+				); 
+			});
+			
+			//console.log(arrayobj);
+			//2. 최종 결과를 가지고 화면 출력 (javascript for문 )
+			let output="";
+			for(let i = 0 ; i < arrayobj.length ;i++){
+				output += arrayobj[i].th + "," +
+				          arrayobj[i].name + "," +
+				          arrayobj[i].age + "<br>";
+			}
+			
+			$('#display').append(output);
+			//javaScript 개선된 for문 사용해서 출력
+			for(let index in arrayobj){
+				console.log(arrayobj[index].th);
+			}
+			
+			//3. jquery each 문으로 출력하세요
+			//결과를 id="display2" div 안쪽에 출력
+			$.each(arrayobj,function(index,obj){
+				$('#display').append(obj.th + "," + obj.name + ","+ obj.age + "<br>");
+			});
+		}
+	</script>
+</head>
+<body>
+	<a href="Ex12_Jquery_Remove.html">이전</a>
+	<a href="Ex14_Checkbox.html">다음</a><br>
+	<p>Ex13_Jquery_Each.html</p><br><br>
+
+	<table>
+		<thead>
+			<tr>
+				<td>기수</td><td>이름</td><td>번호</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>101th</td><td>홍길동</td><td>10</td>
+			</tr>
+			<tr>
+				<td>102th</td><td>김유신</td><td>20</td>
+			</tr>
+			<tr>
+				<td>103th</td><td>유관순</td><td>30</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<button onclick="javascriptFunc()">함수호출</button>
+	</p>
+	<div id="display"></div>
+	<div id="display2"></div>
+</body>
+</html>
+
+
+
+

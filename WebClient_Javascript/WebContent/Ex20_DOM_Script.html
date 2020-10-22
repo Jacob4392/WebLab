@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.democlass{
+		color: red;
+	}
+</style>
+</head>
+<body>
+	<div id=div>
+		<h1 class="democlass">hello world1</h1>
+		<h1 class="democlass">hello world2</h1>
+		<h1 class="democlass">hello world3</h1>
+	</div>
+</body>
+	<script type="text/javascript">
+		//document.getElementsByTagName("h1")[0].removeAttribute("class");
+		//var arr = [1,2];
+		//arr[0]
+		
+		//일반 for, 개선된 for, arr.forEach(), arr.map() + Arrow 표현(줄임표현):화살표함수
+		
+		var arr = document.getElementsByTagName("h1");
+
+		for(let index in arr){
+			//console.log("arr: " + arr[i]);
+			//console.log(index + "/" + arr.length );
+			//document.getElementById("div").removeChild(arr[arr.length-1]);
+			//arr[index].removeAttribute("class"); 
+			//console.log(arr[index]);
+			//console.log(typeof arr[index]);
+			//Uncaught TypeError: arr[index].removeAttribute is not a function
+			if(arr.length > 0){
+				console.log(index + "/" + arr.length );
+				document.getElementById("div").removeChild(arr[arr.length-1]);
+			}
+		}
+		
+		/*??
+			var len = arr.length;
+			for(let i=0; i<len; i++){
+				arr[arr.]
+			}
+			
+		*/
+	</script>
+</html>
