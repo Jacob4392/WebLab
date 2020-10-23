@@ -1,0 +1,152 @@
+:root {
+  --text-color: #f9fcfc;
+  --background-color: teal;
+  --accent-color: sandybrown;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 8px 12px;
+}
+
+.navbar-logos {
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+.navbar-logos a {
+  font-family: 'Black Ops One', cursive;
+}
+
+.navbar-logos i {
+  color: var(--accent-color);
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.navbar-menu li {
+  /* 순서? */
+  padding: 8px 12px;
+}
+
+.navbar-menu li:hover {
+  background-color: var(--accent-color);
+  border-radius: 6px;
+}
+
+.navbar-icons {
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+}
+
+.navbar-icons li {
+  padding: 8px 12px;
+}
+
+.navbar-icons li a i {
+  color: var(--accent-color);
+}
+
+.navbar-toggleBtn {
+  display: none;
+  font-size: 24px;
+  color: var(--accent-color);
+  position: absolute;
+  right: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
+
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-icons {
+    display: none;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navbar-toggleBtn {
+    display: block;
+  }
+
+  .navbar-menu.active,
+  .navbar-icons.active {
+    display: flex;
+  }
+}
+
+/* 메인 섹션 스타일시트 */
+section {
+  width: 100%;
+  height: 700px;
+  display: block;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.sect-home,
+.sect-TIL,
+.sect-contact {
+  text-align: center;
+  padding: 8px 12px;
+}
+
+#home,
+#contact {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+#TIL {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+div.row ul li {
+  list-style: none;
+  text-align: center;
+}
+
+.js-form input,
+.js-toDoForm input {
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.js-weather {
+  margin: 20px;
+}
