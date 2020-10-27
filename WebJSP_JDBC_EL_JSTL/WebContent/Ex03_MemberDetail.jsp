@@ -23,31 +23,6 @@
 		out.print("<script>location.href='Ex02_JDBC_Login.jsp'</script>");
 	}
 
-	String id = request.getParameter("id");
-	  
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	try{
-		conn = Singleton_Helper.getConnection("oracle");
-		String sql = "select id,pwd,name,age,gender,email from koreamember where id=?";
-		pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setString(1, id);
-		
-		rs = pstmt.executeQuery();
-		//rs.next(); 추후에 데이터 1건 경우  (while 없이 )
-		while(rs.next()){
-			}
-		 
-		}catch(Exception e){
-			
-		}finally{
-			Singleton_Helper.close(rs);
-			Singleton_Helper.close(pstmt);
-		}
-
 %>
 <!DOCTYPE html>
 <html>
@@ -89,32 +64,48 @@ td {
 				<table style="width: 400px;height: 100px;margin-left: auto;margin-right: auto">
 				</table>
 				-->
-				<!-- http://192.168.0.8:8090/WebJSP_JDBC/Ex03_MemberDetail.jsp?id=jgdoh&pwd=1004&name=%EA%B4%80%EB%A6%AC%EC%9E%90&age=29&
-																				gender=%EB%82%A8&email=admin@admin.com -->
+				<%
+				  		String id = request.getParameter("id");
+				  
+				  		Connection conn = null;
+				  		PreparedStatement pstmt = null;
+				  		ResultSet rs = null;
+				  		
+				  		try{
+				  			conn = Singleton_Helper.getConnection("oracle");
+				  			String sql = "select id,pwd,name,age,gender,email from koreamember where id=?";
+				  			pstmt = conn.prepareStatement(sql);
+				  			
+				  			pstmt.setString(1, id);
+				  			
+				  			rs = pstmt.executeQuery();
+				  			//rs.next(); 추후에 데이터 1건 경우  (while 없이 )
+				  			while(rs.next()){
+				  %>
 				  			 <table style="width: 400px;height: 100px;margin-left: auto;margin-right: auto;">
 				  			 	<tr>
 				  			 		<td style="width:100px">아이디</td>
-				  			 		<td style="width:100px">${param.id}</td>
+				  			 		<td style="width:100px"><%= rs.getString("id") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">비번</td>
-				  			 		<td style="width:100px">${param.pwd}</td>
+				  			 		<td style="width:100px"><%= rs.getString("pwd") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">이름</td>
-				  			 		<td style="width:100px">${param.name}</td>
+				  			 		<td style="width:100px"><%= rs.getString("name") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">나이</td>
-				  			 		<td style="width:100px">${param.age}</td>
+				  			 		<td style="width:100px"><%= rs.getString("age") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">성별</td>
-				  			 		<td style="width:100px">${param.gender}</td>
+				  			 		<td style="width:100px"><%= rs.getString("gender") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">이메일</td>
-				  			 		<td style="width:100px">${param.email}</td>
+				  			 		<td style="width:100px"><%= rs.getString("email") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td colspan="2">
@@ -122,6 +113,17 @@ td {
 				  			 		</td>
 				  			 	</tr>
 				  			 </table>	
+				  <%				
+				  			}
+				 
+				  		}catch(Exception e){
+				  			
+				  		}finally{
+				  			Singleton_Helper.close(rs);
+				  			Singleton_Helper.close(pstmt);
+				  		}
+				  
+				  %>
 			</td>
 		</tr>
 		<tr>

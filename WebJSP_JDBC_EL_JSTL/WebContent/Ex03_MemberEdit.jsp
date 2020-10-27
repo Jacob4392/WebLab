@@ -77,7 +77,7 @@ td {
 			<td style="width: 200px"><jsp:include page="/common/Left.jsp"></jsp:include>
 			</td>
 			<td style="width: 700px">
-				<form action="Ex03_MemberEditok.jsp" method="post">
+				<form action="EditServlet" method="post">
 
 					<h3 style="text-align: center;">회원가입</h3>
 					<div>

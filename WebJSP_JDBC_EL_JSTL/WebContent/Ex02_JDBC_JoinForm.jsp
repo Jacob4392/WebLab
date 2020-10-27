@@ -80,7 +80,7 @@ CREATE TABLE koreaMember
 				<jsp:include page="/common/Left.jsp"></jsp:include>
 			</td>
 			<td style="width: 700px">
-				<form action="Ex02_JDBC_JoinOK.jsp" method="post" name="joinForm" id="joinForm">
+				<form action="MemberServlet" method="post" name="joinForm" id="joinForm">
 					<h3 style="text-align: center;">회원가입</h3>
 					<div>
 						<table

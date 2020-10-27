@@ -1,8 +1,8 @@
 <%@page import="kr.or.bit.dto.product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+	<%
 /*
 package kr.or.bit.dto;
 public class product {
@@ -54,7 +54,8 @@ public class product {
     
 }
  */
-
+	
+ 	//DB로부터 select해서 가공한 것
     ArrayList<product> list = new ArrayList<>();
     list.add(new product("홍길동",10,"서울시"));
     list.add(new product("이순신",10,"서울시"));
@@ -80,34 +81,33 @@ public class product {
     list.add(new product("홍길동",10,"서울시"));
  
 %>
- 
-<c:set var="list" value="<%= list %>" />
-list : ${fn:length(list)}<br>
-fn:length : ${(fn:length(list) + 3) / 4 - 1}<br>
-<c:forEach var="item" items="${list}">
+
+	<c:set var="list" value="<%= list %>" />
+	list : ${fn:length(list)}
+	<br> fn:length : ${(fn:length(list) + 3) / 4 - 1}
+	<br>
+	<c:forEach var="item" items="${list}">
     이름 : ${item.name} 
     나이 : ${item.age}
     주소 : ${item.addr}
   <br>
-</c:forEach>
- <hr>
- 
-<table border="1">
-<c:forEach var="row" begin="0" end="${(fn:length(list) + 3) / 4 - 1}">
-   <tr>
-       <c:forEach begin="0" end="3" var="col">
-               <c:set var="item" value="${list[row*4+col]}" />
-               <c:if test="${not empty item}">
-               <td>
-                   <img alt="" src="${item.image}" style="width: 100px;height: 100px"><br>  
-			                    이름 :${item.name}<br>
-			                    나이:${item.age}<br>
-			                    주소:${item.addr}<br>
-            </td>
-            </c:if>    
-       </c:forEach>
-   <tr>
-</c:forEach>
-</table>
+	</c:forEach>
+	<hr>
+
+	<table border="1">
+		<c:forEach var="row" begin="0" end="${(fn:length(list) + 3) / 4 - 1}">
+			<tr>
+				<c:forEach begin="0" end="3" var="col">
+					<c:set var="item" value="${list[row*4+col]}" />
+					<c:if test="${not empty item}">
+						<td><img alt="" src="${item.image}"
+							style="width: 100px; height: 100px"><br> 이름
+							:${item.name}<br> 나이:${item.age}<br> 주소:${item.addr}<br>
+						</td>
+					</c:if>
+				</c:forEach>
+			<tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
