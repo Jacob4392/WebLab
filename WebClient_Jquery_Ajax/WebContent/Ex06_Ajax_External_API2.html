@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		//https://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?
+		//tags=입력값&tagmode=any&format=json
+		
+		$(function(){
+			$('#btn').click(function(){
+				let API = "http://data.ex.co.kr/openapi/business/representFoodServiceArea?";
+				//key=test&type=json&numOfRows=100&pageNo=1
+				let data = {
+						key:"test",
+						type:"json",
+						numOfRows:"20",
+						pageNo="1"
+					};
+				console.log(data);
+				$.getJSON(API, data, function(data, textStatus, xhr){
+					//console.log(data.items);
+					$('#images').empty();
+					$.each(data.items,function(index,obj){
+						$('<option></option>').attr("src",obj.media.m).appendTo("#images");
+						//img 태그를 생성하고 src 속성에 이미지 경로를 설정하고 div 태그에 append 하겠다
+					});
+				});
+			});
+			
+		});
+	</script>
+</head>
+<body>
+<!--  
+https://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?
+-->
+	<input type="text" id="search">
+	<input type="button" value="검색하기" id="btn">
+	<hr>
+	<div id="images"></div>
+		
+	</select>
+</body>
+</html>

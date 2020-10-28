@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#b").click(function(){
+     var tag = $("<table></table>").html("<b>Hello world</b>");
+     alert(tag);
+     $('#a').append(tag);
+  });
+});
+</script>
+</head>
+<body>
+	<div id="a"></div>
+	<p id="b">If you click on me</p>
+</body>
+</html>
+

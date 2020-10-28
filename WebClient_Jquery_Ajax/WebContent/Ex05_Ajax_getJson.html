@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		//jQuery.getJSON()
+    	//Load JSON-encoded data from the server using a GET HTTP request.
+    	
+    	//dataType  >> getJSON() >> json >> default
+    	$(function(){
+    		$('#btn .btnload').click(function(){
+    			$.getJSON("Ex05_json.json",function(data){ //도착 (성공)
+    				//console.log(data);
+    				//[{},{},{},{}]
+    				//문제) Table 만들고  let table="<table>" Table td 안에
+    				//num  값 , name 값 출력하세요
+    				//$.each()
+    				//최종 Table display append 하세요
+    				//hint) 객체.속성명 or 객체["속성명"]
+					let table="<table border='1'>";
+            		//each 문사용해서 tr , td 만들고 서버에서 받은 데이터 넣고 ....
+            		table+="<tr><th>INDEX</th><th>NUM</th><th>NAME</th></tr>";
+            			$.each(data,function(index,obj){
+            				for(let key in obj){
+            					console.log("key :" + key);
+            					console.log(obj[key]); //key 던지면  value 얻는다
+            				}
+            				
+            				//key point
+            				//1. 객체.속성명
+            				//2. 객체["속성명"]
+            				  table+="<tr>";
+            				  		table+="<td>" + index + "</td>";
+            				  		table+="<td>" + obj.num + "</td>";
+            				  		if(obj.num){ //if num이 존재한다면
+            					  		table+="<td>" + obj["Name"] + "</td>";
+            				  		}else{
+            					 		 table+="<td>" + "EMPTY" + "</td>";
+            				 		 }
+            				  table+="</tr>";
+            			});
+            		
+            		table+="</table>";
+            		
+            		$('#display').html(table);
+                	//$('#display').append(table);
+    			});
+    		});
+    	});
+	</script>
+</head>
+<body>
+	<div id="btn">
+		<div class="btnload">JSON DATA LOAD</div>
+	</div>
+	<div id="display"></div>
+</body>
+</html>
+
+
+

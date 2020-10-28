@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#btn').click(function(){
+				
+				//jsp?name=kglim&pwd=1004
+				//권장하지 않아요
+				/*
+				let name = $('#name').val();
+				let pwd = $('#pwd').val();
+				let param = 'name='+name+'&pwd='+pwd;
+					
+				$.post('Ex04_Server.jsp',param,function(responsedata){
+					$('#message').html(responsedata);
+				});
+				*/
+				//권장방법 : 두번째 parameter 설정 : json{}객체
+				
+				//parameter를 되도록 json객체로 만들자
+				const data = {"name":$('#name').val(),"pwd":$('#pwd').val()};
+				$.post("Ex04_Server.jsp",data,function(responsedata){
+					$('#message').html(responsedata);
+				});
+		
+			});
+		});
+	</script>
+</head>
+<body>
+	이름 :<input type="text" id="name"><br>
+	비번 :<input type="text" id="pwd"><br>
+	<input type="button" id="btn" value="비동기전송">
+	<hr>
+	<div id="message"></div>
+</body>
+</html>
+
+
+
+

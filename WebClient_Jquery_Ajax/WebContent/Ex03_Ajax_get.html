@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX get()</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+		   //jQuery.get( url [, data ] [, success ] [, dataType ] )
+		   //httReq.open("GET")  , httReq.open("POST")
+			$(function(){
+				$('#btn').click(function(){
+					$.get("Ex03_Company.xml",function(data){
+						console.log(data); //서버에서 받은 xml 데이터
+						//가공
+						$('#display').empty(); //자식요소 제거
+						console.log($(data).find('Company'));
+						//find() 필터함수 >> return Array [Company, Company]
+						
+						//.each(function(){index , element}
+						$(data).find('Company').each(function(){ //each 여기서 2번 반복됨
+							//console.log(this); //Company 태그
+							let entry = $(this);  //가능 문법 공부
+							console.log(entry);
+							/* 
+							<Company CompanyType="private">
+								<CompanyName>Bit</CompanyName>
+								<CompanyNumber>2019</CompanyNumber>
+								<CompanyAddress>서울시 서초구</CompanyAddress>
+								<Name></Name>
+							</Company>
+							return ....
+							*/
+							let html = "<div>" + entry.attr('CompanyType') + "</div>";
+							html+= "<div>" + entry.find('CompanyName').text() + "</div>";
+							html+= "<div>" + entry.find('CompanyNumber').text() + "</div>";
+							html+= "<div>" + entry.find('CompanyAddress').text() + "</div>";
+							html+= "<div>" + entry.find('Name').text() + "</div>";
+							$('#display').append(html);
+							
+							//var companyarr = $(data).find('Company');
+							//$.each(companyarr,function(index, obj){})
+						});
+					});
+				});
+			});
+/* 			$(function(){
+				$('#btn').click(function(){
+					$.get("Ex03_Company.xml",function(data){
+						console.log(data);
+						$('#display').empty();
+						console.log($(data).find('company'));
+					});
+				});
+			}); */
+		</script>
+</head>
+<body>
+	<input type="button" id="btn" value="회사소개">
+	<div id="display" style="background-color: gray">DATA</div>
+</body>
+</html>
+
+
+
