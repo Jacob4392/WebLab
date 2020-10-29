@@ -12,8 +12,6 @@
 	 => <jsp:include page="/common/Check.jsp"/>
 %> --%>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>

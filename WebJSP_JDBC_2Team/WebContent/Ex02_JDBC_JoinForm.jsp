@@ -27,6 +27,30 @@
 		//jquery 로 간단하게 유효성 check 하기
 		$(function() {
 			$('#joinForm').submit(validate);
+			$("#idcheck").click(function(){
+				if($("#id").val()===""){
+					alert("아이디를 입력하세요.");
+				}else{
+					$.ajax({
+						url:"http://localhost:9928/WebJSP_JDBC_2Team/IdCheckServlet",
+						type:"POST",
+						dataType:"html",
+						data:{data:$("#id").val()},
+						success:function(responsedata){
+							if(responsedata === "true"){
+								alert("존재하는 ID입니다.");
+								$("#id").val('').focus();
+								
+							}else{
+								alert("사용가능한 ID입니다.");
+								$("#pwd").focus();
+								//받은 데이터가 false
+							}
+							
+						}
+					});
+				}
+			});
 		});
 		function validate() {
 			if ($('#id').val() == "") { // 아이디 검사
@@ -73,7 +97,7 @@
 							style="width: 400px; height: 200px; margin-left: auto; margin-right: auto;">
 							<tr>
 								<th>ID:</th>
-								<td><input type="text" name="id" id="id"></td>
+								<td><input type="text" name="id" id="id"><input type ="button" value = "중복검사" id = "idcheck"></td>
 							</tr>
 							<tr>
 								<th>PWD:</th>

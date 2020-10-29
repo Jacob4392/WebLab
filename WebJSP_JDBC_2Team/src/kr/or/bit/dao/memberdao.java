@@ -320,4 +320,38 @@ public class memberdao {
 		}
 		return rowcount;
 	}
+	
+	
+	//아이디 중복 체크 dao /// IdCheckServlet.java에서 사용! 
+	public String IdIsExist(String id) {
+		String idCheck="";
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			System.out.println(conn.isClosed()); // 연결 상태 확인
+
+			String query = "select id from koreaMember where id=?";
+
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				idCheck = "true";
+			}else {
+				idCheck = "false";
+			}
+
+		} catch (Exception e) {
+			System.out.println("데이터 전체 조회 중 문제 발생 : " + e.getMessage());
+		} finally {
+			Singleton_Helper.close(rs);
+			Singleton_Helper.close(pstmt);
+		}
+		return idCheck;
+	}
+	
+	
 }
