@@ -1,0 +1,48 @@
+package kr.or.bit.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.bit.action.Action;
+import kr.or.bit.action.ActionForward;
+import kr.or.bit.dao.BoardDao;
+import kr.or.bit.dto.Board;
+
+public class BoardReplyView implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request,
+			HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		// 글번호를 받아서
+		//BoardDao 객체  getDetail 메서드를 사용
+		//현재 읽은 글에 대한 정보를 가지고 온다
+		//request객체를 사용해서 getDetail를 통해 얻은
+		//boardBean 객체를 설정(forward 된 곳에서 정보를 얻기위해)
+		//forward => qna_board_reply.jsp)
+		BoardDao boarddao = new BoardDao();
+		Board boarddata = new Board();
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		try {
+			boarddata = boarddao.getDetail(num);
+		} catch (Exception e) {
+			System.out.println("[BoardReplyView.java] 예외 발생 : " + e.getMessage());
+			e.printStackTrace();
+		}
+		if(boarddata == null){
+			System.out.println("답변하기 원본 데이터 로드 실패");
+			return null;
+		}
+		System.out.println("답변하기 원본 데이터 로드");
+		
+		//원본 데이터 담기
+		request.setAttribute("boarddata", boarddata);
+		
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("/WEB-INF/views/Board_Reply.jsp");
+		return forward;
+	}
+
+}
